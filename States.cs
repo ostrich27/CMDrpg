@@ -56,30 +56,31 @@ namespace RPG
         public static void HandleLvlDown()
         {
 
-                if (RegisteredPlayer.CurrentPlayer.EXP < 0 && RegisteredPlayer.CurrentPlayer.LVL > 1)
+            if (RegisteredPlayer.CurrentPlayer.EXP < 0 && RegisteredPlayer.CurrentPlayer.LVL > 1)
+            {
+                if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Warrior)
                 {
-                    if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Warrior)
-                    {
-                        RegisteredPlayer.CurrentPlayer.LVL--;
-                        RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
-                        RegisteredPlayer.CurrentPlayer.Damage -= 5;
-                        RegisteredPlayer.CurrentPlayer.LVL--;
-                        RegisteredPlayer.CurrentPlayer.EXPToNextLvl /= 2;
-                        RegisteredPlayer.CurrentPlayer.Strength -= 2;
-                        RegisteredPlayer.CurrentPlayer.Intelect -= 1;
-                        RegisteredPlayer.CurrentPlayer.Dexterity -= 1;
-                    }
-                    else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Mage)
-                    {
-                        RegisteredPlayer.CurrentPlayer.LVL--;
-                        RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
-                        RegisteredPlayer.CurrentPlayer.Damage -= 5;
-                        RegisteredPlayer.CurrentPlayer.LVL--;
-                        RegisteredPlayer.CurrentPlayer.EXPToNextLvl /= 2;
-                        RegisteredPlayer.CurrentPlayer.Strength -= 2;
-                        RegisteredPlayer.CurrentPlayer.Intelect -= 1;
-                        RegisteredPlayer.CurrentPlayer.Dexterity -= 1;
-                    }else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Gionus_Jah_Rak_AAl)
+                    RegisteredPlayer.CurrentPlayer.LVL--;
+                    RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
+                    RegisteredPlayer.CurrentPlayer.Damage -= 5;
+                    RegisteredPlayer.CurrentPlayer.LVL--;
+                    RegisteredPlayer.CurrentPlayer.EXPToNextLvl /= 2;
+                    RegisteredPlayer.CurrentPlayer.Strength -= 2;
+                    RegisteredPlayer.CurrentPlayer.Intelect -= 1;
+                    RegisteredPlayer.CurrentPlayer.Dexterity -= 1;
+                }
+                else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Mage)
+                {
+                    RegisteredPlayer.CurrentPlayer.LVL--;
+                    RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
+                    RegisteredPlayer.CurrentPlayer.Damage -= 5;
+                    RegisteredPlayer.CurrentPlayer.LVL--;
+                    RegisteredPlayer.CurrentPlayer.EXPToNextLvl /= 2;
+                    RegisteredPlayer.CurrentPlayer.Strength -= 2;
+                    RegisteredPlayer.CurrentPlayer.Intelect -= 1;
+                    RegisteredPlayer.CurrentPlayer.Dexterity -= 1;
+                }
+                else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Gionus_Jah_Rak_AAl)
                 {
                     RegisteredPlayer.CurrentPlayer.LVL--;
                     RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
