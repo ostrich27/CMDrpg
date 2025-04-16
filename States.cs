@@ -26,7 +26,8 @@ namespace RPG
                     RegisteredPlayer.CurrentPlayer.Intelect += 2;
                     RegisteredPlayer.CurrentPlayer.Strength += 1;
                     RegisteredPlayer.CurrentPlayer.Dexterity += 1;
-                }else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Gionus_Jah_Rak_AAl)
+                }
+                else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Gionus_Jah_Rak_AAl)
                 {
                     RegisteredPlayer.CurrentPlayer.Strength += 2;
                     RegisteredPlayer.CurrentPlayer.Intelect += 1;
@@ -37,17 +38,18 @@ namespace RPG
                     Console.WriteLine("Unknown player class.");
 
                     RegisteredPlayer.CurrentPlayer.EXP = excessExp; // Carry over remaining EXP
-                RegisteredPlayer.CurrentPlayer.EXPToNextLvl *= 2;
-                Console.WriteLine("LVL UP!");
-                Console.WriteLine($"Current LVL: {RegisteredPlayer.CurrentPlayer.LVL}");
-                Console.WriteLine($"New EXP: {RegisteredPlayer.CurrentPlayer.EXP}/{RegisteredPlayer.CurrentPlayer.EXPToNextLvl}");
+                    RegisteredPlayer.CurrentPlayer.EXPToNextLvl *= 2;
+                    Console.WriteLine("LVL UP!");
+                    Console.WriteLine($"Current LVL: {RegisteredPlayer.CurrentPlayer.LVL}");
+                    Console.WriteLine($"New EXP: {RegisteredPlayer.CurrentPlayer.EXP}/{RegisteredPlayer.CurrentPlayer.EXPToNextLvl}");
 
-                if (excessExp > 0)
-                {
-                    Console.WriteLine($"Carried over {excessExp} EXP to next level");
+                    if (excessExp > 0)
+                    {
+                        Console.WriteLine($"Carried over {excessExp} EXP to next level");
+                    }
                 }
+
             }
-            
         }
 
 
