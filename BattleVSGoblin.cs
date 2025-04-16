@@ -159,6 +159,7 @@ namespace RPG
                 // Check if all enemies are defeated
                 if (goblins.Count == 0 && goblinBosses.Count == 0)
                 {
+                    Console.Clear();
                     Console.WriteLine("\nAll enemies defeated! You win!");
                     int totalExp = (500 * numberOfGoblins) + (1500 * numberOfGoblinBoss);
                     RegisteredPlayer.CurrentPlayer.EXP += totalExp;
@@ -171,10 +172,12 @@ namespace RPG
                     PlayerDataService.SavePlayer(RegisteredPlayer.CurrentPlayer);
                     ConsoleTexts.PrintExpTillNextLvl();
                     ConsoleTexts.PrintCurrentExp();
+
+                    Console.WriteLine("\nPress any key to continue...");
+                    Console.ReadKey();
                     ConsoleTexts.WhereToGo();
                     return;
                 }
-
                 // Enemies' turn
                 if (RegisteredPlayer.CurrentPlayer?.CurrentHealth > 0 && (goblins.Count > 0 || goblinBosses.Count > 0))
                 {

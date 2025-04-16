@@ -52,7 +52,7 @@ namespace RPG
                     Console.WriteLine($"Intellect: {RegisteredPlayer.CurrentPlayer.Intelect} (Primary)");
                     Console.WriteLine("Abilities: Spells, ranged attacks, low defense.");
                     break;
-                case Player.PlayerClass.Gionus_Jah_Rak_AAl:
+                case Player.PlayerClass.GionusJahRakAAl:
                     Console.WriteLine("Gionus_Jah_Rak_AAl: A powerful being with balanced stats.");
                     Console.WriteLine($"Strength: {RegisteredPlayer.CurrentPlayer.Strength}");
                     Console.WriteLine($"Dexterity: {RegisteredPlayer.CurrentPlayer.Dexterity}");

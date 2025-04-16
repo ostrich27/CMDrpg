@@ -43,7 +43,7 @@ namespace RPG
                 {
                     "1" => Player.PlayerClass.Warrior,
                     "2" => Player.PlayerClass.Mage,
-                    "3" => Player.PlayerClass.Gionus_Jah_Rak_AAl,
+                    "3" => Player.PlayerClass.GionusJahRakAAl,
                     _ => throw new NotImplementedException(),
                 };
 

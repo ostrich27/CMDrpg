@@ -7,7 +7,7 @@ public class Player
     {
         Warrior,
         Mage,
-        Gionus_Jah_Rak_AAl,
+        GionusJahRakAAl,
     }
 
     public PlayerClass playerClass; // This is the field that will be serialized
@@ -38,7 +38,7 @@ public class Player
                 MaxHealth = (int)(MageBaseHealth + (Strength * 0.5f));
                 Damage = (int)(MageBaseDamage + (Intelect * 0.5));
                 break;
-            case PlayerClass.Gionus_Jah_Rak_AAl:
+            case PlayerClass.GionusJahRakAAl:
                 Strength = 10;
                 Dexterity = 10;
                 Intelect = 10;

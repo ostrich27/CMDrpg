@@ -7,14 +7,14 @@ namespace RPG
 
         public static void HandleLvlUP()
         {
-
             while (RegisteredPlayer.CurrentPlayer.EXP >= RegisteredPlayer.CurrentPlayer.EXPToNextLvl)
             {
                 int excessExp = RegisteredPlayer.CurrentPlayer.EXP - RegisteredPlayer.CurrentPlayer.EXPToNextLvl;
                 RegisteredPlayer.CurrentPlayer.LVL++;
                 RegisteredPlayer.CurrentPlayer.MaxHealth += 10;
                 RegisteredPlayer.CurrentPlayer.Damage += 5;
-                //add stats
+
+                // Class-specific stat increases
                 if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Warrior)
                 {
                     RegisteredPlayer.CurrentPlayer.Strength += 2;
@@ -27,7 +27,7 @@ namespace RPG
                     RegisteredPlayer.CurrentPlayer.Strength += 1;
                     RegisteredPlayer.CurrentPlayer.Dexterity += 1;
                 }
-                else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Gionus_Jah_Rak_AAl)
+                else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.GionusJahRakAAl)
                 {
                     RegisteredPlayer.CurrentPlayer.Strength += 2;
                     RegisteredPlayer.CurrentPlayer.Intelect += 1;
@@ -36,22 +36,20 @@ namespace RPG
                 else
                 {
                     Console.WriteLine("Unknown player class.");
-
-                    RegisteredPlayer.CurrentPlayer.EXP = excessExp; // Carry over remaining EXP
-                    RegisteredPlayer.CurrentPlayer.EXPToNextLvl *= 2;
-                    Console.WriteLine("LVL UP!");
-                    Console.WriteLine($"Current LVL: {RegisteredPlayer.CurrentPlayer.LVL}");
-                    Console.WriteLine($"New EXP: {RegisteredPlayer.CurrentPlayer.EXP}/{RegisteredPlayer.CurrentPlayer.EXPToNextLvl}");
-
-                    if (excessExp > 0)
-                    {
-                        Console.WriteLine($"Carried over {excessExp} EXP to next level");
-                    }
                 }
 
+                RegisteredPlayer.CurrentPlayer.EXP = excessExp; // Carry over remaining EXP
+                RegisteredPlayer.CurrentPlayer.EXPToNextLvl *= 2;
+                Console.WriteLine("LVL UP!");
+                Console.WriteLine($"Current LVL: {RegisteredPlayer.CurrentPlayer.LVL}");
+                Console.WriteLine($"New EXP: {RegisteredPlayer.CurrentPlayer.EXP}/{RegisteredPlayer.CurrentPlayer.EXPToNextLvl}");
+
+                if (excessExp > 0)
+                {
+                    Console.WriteLine($"Carried over {excessExp} EXP to next level");
+                }
             }
         }
-
 
         public static void HandleLvlDown()
         {
@@ -63,7 +61,6 @@ namespace RPG
                     RegisteredPlayer.CurrentPlayer.LVL--;
                     RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
                     RegisteredPlayer.CurrentPlayer.Damage -= 5;
-                    RegisteredPlayer.CurrentPlayer.LVL--;
                     RegisteredPlayer.CurrentPlayer.EXPToNextLvl /= 2;
                     RegisteredPlayer.CurrentPlayer.Strength -= 2;
                     RegisteredPlayer.CurrentPlayer.Intelect -= 1;
@@ -74,18 +71,16 @@ namespace RPG
                     RegisteredPlayer.CurrentPlayer.LVL--;
                     RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
                     RegisteredPlayer.CurrentPlayer.Damage -= 5;
-                    RegisteredPlayer.CurrentPlayer.LVL--;
                     RegisteredPlayer.CurrentPlayer.EXPToNextLvl /= 2;
                     RegisteredPlayer.CurrentPlayer.Strength -= 2;
                     RegisteredPlayer.CurrentPlayer.Intelect -= 1;
                     RegisteredPlayer.CurrentPlayer.Dexterity -= 1;
                 }
-                else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.Gionus_Jah_Rak_AAl)
+                else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.GionusJahRakAAl)
                 {
                     RegisteredPlayer.CurrentPlayer.LVL--;
                     RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
                     RegisteredPlayer.CurrentPlayer.Damage -= 5;
-                    RegisteredPlayer.CurrentPlayer.LVL--;
                     RegisteredPlayer.CurrentPlayer.EXPToNextLvl /= 2;
                     RegisteredPlayer.CurrentPlayer.Strength -= 2;
                     RegisteredPlayer.CurrentPlayer.Intelect -= 1;
