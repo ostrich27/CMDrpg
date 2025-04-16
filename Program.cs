@@ -37,11 +37,13 @@ namespace RPG
                 Console.WriteLine("enter player class");
                 Console.WriteLine("1.Warrior");
                 Console.WriteLine("2.Mage");
+                Console.WriteLine("3 Gionus_Jah_Rak_AAl");
                 Player.PlayerClass playerclass;
                 playerclass = Console.ReadLine() switch
                 {
                     "1" => Player.PlayerClass.Warrior,
                     "2" => Player.PlayerClass.Mage,
+                    "3" => Player.PlayerClass.Gionus_Jah_Rak_AAl,
                     _ => throw new NotImplementedException(),
                 };
 
