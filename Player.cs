@@ -6,7 +6,8 @@ public class Player
     public enum PlayerClass
     {
         Warrior,
-        Mage
+        Mage,
+        Gionus_Jah_Rak_AAl,
     }
 
     public PlayerClass playerClass; // This is the field that will be serialized
@@ -37,7 +38,17 @@ public class Player
                 MaxHealth = (int)(MageBaseHealth + (Strength * 0.5f));
                 Damage = (int)(MageBaseDamage + (Intelect * 0.5));
                 break;
-            
+            case PlayerClass.Gionus_Jah_Rak_AAl:
+                Strength = 10;
+                Dexterity = 10;
+                Intelect = 10;
+                int GionusBaseHealth = 130;
+                int GionusBaseDamage = 16;
+                float GionusBaseDefense = 0.5f + (Dexterity / 100);
+                MaxHealth = (int)(GionusBaseHealth + (Strength * 0.5f));
+                Damage = (int)(GionusBaseDamage + (Dexterity * 0.5));
+                break;
+
         }
     }
 
