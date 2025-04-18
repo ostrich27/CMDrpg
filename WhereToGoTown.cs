@@ -1,5 +1,6 @@
 ﻿using RPG;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace RPG 
 {
@@ -43,8 +44,7 @@ namespace RPG
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("You chose to buy items.");
-                    // Add logic for buying items
+                    BuyItems();
                     break;
                 case 2:
                     Console.WriteLine("You chose to sell items.");
@@ -83,8 +83,47 @@ namespace RPG
                     break;
             }
         }
-        
-        
+        public static void BuyItems()
+        {
+            Inventory inventory = new Inventory();
+            Item potion = new Item("Health Potion", true);
+            Item sword = new Item("Sword", false);
+            Console.WriteLine("""
+                1. health potion - 10 gold
+                2. sword - 50 gold
+                """);
+            int choice = Choice.Get(1, 2);
+            switch (choice)
+            {
+                case 1:
+                    if (RegisteredPlayer.CurrentPlayer.Gold >= 10)
+                    {
+                        RegisteredPlayer.CurrentPlayer.Gold -= 10;
+                        Console.WriteLine("You bought a health potion.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have enough gold.");
+                    }
+                    break;
+                case 2:
+                    if (RegisteredPlayer.CurrentPlayer.Gold >= 50)
+                    {
+                        RegisteredPlayer.CurrentPlayer.Gold -= 50;
+                        Console.WriteLine("You bought a sword.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have enough gold.");
+                    }
+                    break;
+            }
+            Console.WriteLine("Press any key to return to the shop menu.");
+            Console.ReadKey();
+            Shop();
+        }
+
+
 
 
     }
@@ -100,4 +139,5 @@ namespace RPG
             return choice;
         }
     }
+
 }

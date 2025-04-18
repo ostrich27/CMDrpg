@@ -14,7 +14,6 @@ namespace RPG
                 Console.WriteLine("No player data available.");
                 return;
             }
-
             Console.WriteLine("_________________________________Player Profile_________________________________");
             Console.WriteLine("\n \n \n");
 
@@ -89,7 +88,24 @@ namespace RPG
             {
                 Console.WriteLine("Invalid choice. Player data not saved.");
             }
-
+            Console.WriteLine("""
+                Open backpack?
+                1. yes
+                2. no
+                """);
+            string choice2 = Console.ReadLine();
+            if (choice2 == "1")
+            {
+                // Open backpack
+            }
+            else if (choice2 == "2")
+            {
+                Console.WriteLine("Backpack not opened.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Backpack not opened.");
+            }
             ConsoleTexts.WhereToGo();
         }
     }

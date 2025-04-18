@@ -72,6 +72,7 @@ public class Player
 
     public bool IsAlive => RegisteredPlayer.CurrentPlayer.CurrentHealth > 0;
 
+
     // Parameterless constructor required for XML serialization
     public Player( )
     {

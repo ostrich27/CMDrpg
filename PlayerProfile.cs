@@ -25,7 +25,6 @@ namespace RPG
             Console.WriteLine("EXP: " + RegisteredPlayer.CurrentPlayer?.EXP);
             Console.WriteLine("EXP Till Next Level: " + RegisteredPlayer.CurrentPlayer?.EXPTillNextLvl);
             Console.WriteLine("Gold: " + RegisteredPlayer.CurrentPlayer?.Gold);
-
             ConsoleTexts.WhereToGo();
         }
              
