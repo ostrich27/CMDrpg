@@ -29,9 +29,9 @@ namespace RPG
                 }
                 else if (RegisteredPlayer.CurrentPlayer.playerClass == Player.PlayerClass.GionusJahRakAAl)
                 {
-                    RegisteredPlayer.CurrentPlayer.Strength += 2;
+                    RegisteredPlayer.CurrentPlayer.Strength += 1;
                     RegisteredPlayer.CurrentPlayer.Intelect += 1;
-                    RegisteredPlayer.CurrentPlayer.Dexterity += 1;
+                    RegisteredPlayer.CurrentPlayer.Dexterity += 2;
                 }
                 else
                 {
@@ -82,9 +82,9 @@ namespace RPG
                     RegisteredPlayer.CurrentPlayer.MaxHealth -= 10;
                     RegisteredPlayer.CurrentPlayer.Damage -= 5;
                     RegisteredPlayer.CurrentPlayer.EXPToNextLvl /= 2;
-                    RegisteredPlayer.CurrentPlayer.Strength -= 2;
+                    RegisteredPlayer.CurrentPlayer.Strength -= 1;
                     RegisteredPlayer.CurrentPlayer.Intelect -= 1;
-                    RegisteredPlayer.CurrentPlayer.Dexterity -= 1;
+                    RegisteredPlayer.CurrentPlayer.Dexterity -= 2;
                 }
             }
 

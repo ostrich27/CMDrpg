@@ -16,18 +16,20 @@ namespace RPG
             }
 
             Console.WriteLine("_________________________________Player Profile_________________________________");
-            Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
+            Console.WriteLine("\n \n \n");
 
             // Display base player stats
-            Console.WriteLine("Base Player Stats:");
-            Console.WriteLine($"Name: {RegisteredPlayer.CurrentPlayer.Name}");
-            Console.WriteLine($"Class: {RegisteredPlayer.CurrentPlayer.playerClass}");
-            Console.WriteLine($"Health: {RegisteredPlayer.CurrentPlayer.CurrentHealth}/{RegisteredPlayer.CurrentPlayer.MaxHealth}");
-            Console.WriteLine($"Damage: {RegisteredPlayer.CurrentPlayer.Damage}");
-            Console.WriteLine($"Level: {RegisteredPlayer.CurrentPlayer.LVL}");
-            Console.WriteLine($"EXP: {RegisteredPlayer.CurrentPlayer.EXP}");
-            Console.WriteLine($"EXP Till Next Level: {RegisteredPlayer.CurrentPlayer.EXPTillNextLvl}");
-            Console.WriteLine($"Gold: {RegisteredPlayer.CurrentPlayer.Gold}");
+            Console.WriteLine($"""
+                Base Player Stats: 
+                Name: {RegisteredPlayer.CurrentPlayer.Name} 
+                Class: {RegisteredPlayer.CurrentPlayer.playerClass} 
+                Health: {RegisteredPlayer.CurrentPlayer.CurrentHealth}/{RegisteredPlayer.CurrentPlayer.MaxHealth} 
+                Damage: {RegisteredPlayer.CurrentPlayer.Damage}
+                Level: {RegisteredPlayer.CurrentPlayer.LVL}
+                EXP: {RegisteredPlayer.CurrentPlayer.EXP}
+                EXP Till Next Level: {RegisteredPlayer.CurrentPlayer.EXPTillNextLvl}
+                Gold: {RegisteredPlayer.CurrentPlayer.Gold}
+                """);
 
             Console.WriteLine("____________________________________________________________");
             Console.WriteLine(); Console.WriteLine();
@@ -37,30 +39,55 @@ namespace RPG
             switch (RegisteredPlayer.CurrentPlayer.playerClass)
             {
                 case Player.PlayerClass.Warrior:
-                    Console.WriteLine("Warrior: A strong melee fighter with high strength and durability.");
-                    Console.WriteLine($"Strength: {RegisteredPlayer.CurrentPlayer.Strength} (Primary)");
-                    Console.WriteLine($"Dexterity: {RegisteredPlayer.CurrentPlayer.Dexterity}");
-                    Console.WriteLine($"Intellect: {RegisteredPlayer.CurrentPlayer.Intelect}");
-                    Console.WriteLine("Abilities: Melee attacks, high defense.");
-                    Console.WriteLine(Quests.questID);
+                    Console.WriteLine($"""
+                        Warrior: A strong melee fighter with high strength and durability
+                        Strength: {RegisteredPlayer.CurrentPlayer.Strength} (Primary)
+                        Dexterity: {RegisteredPlayer.CurrentPlayer.Dexterity}
+                        Intellect: {RegisteredPlayer.CurrentPlayer.Intelect}
+                        Abilities: Melee attacks, high defense.
+                        """);
                     break;
 
                 case Player.PlayerClass.Mage:
-                    Console.WriteLine("Mage: A spellcaster with high intellect and magical abilities.");
-                    Console.WriteLine($"Strength: {RegisteredPlayer.CurrentPlayer.Strength}");
-                    Console.WriteLine($"Dexterity: {RegisteredPlayer.CurrentPlayer.Dexterity}");
-                    Console.WriteLine($"Intellect: {RegisteredPlayer.CurrentPlayer.Intelect} (Primary)");
-                    Console.WriteLine("Abilities: Spells, ranged attacks, low defense.");
+                    Console.WriteLine($"""
+                        Mage: A spellcaster with high intellect and magical abilities.
+                        Strength: {RegisteredPlayer.CurrentPlayer.Strength}
+                        Dexterity: {RegisteredPlayer.CurrentPlayer.Dexterity}
+                        Intellect: {RegisteredPlayer.CurrentPlayer.Intelect} (Primary)
+                        Abilities: Spells, ranged attacks, low defense.
+                        """);
                     break;
                 case Player.PlayerClass.GionusJahRakAAl:
-                    Console.WriteLine("Gionus_Jah_Rak_AAl: A powerful being with balanced stats.");
-                    Console.WriteLine($"Strength: {RegisteredPlayer.CurrentPlayer.Strength}");
-                    Console.WriteLine($"Dexterity: {RegisteredPlayer.CurrentPlayer.Dexterity}");
-                    Console.WriteLine($"Intellect: {RegisteredPlayer.CurrentPlayer.Intelect}");
-                    Console.WriteLine("Abilities: Versatile in combat, high damage output.");
+                    Console.WriteLine($"""
+                        Gionus_Jah_Rak_AAl: A powerful being with balanced stats.
+                        Strength: {RegisteredPlayer.CurrentPlayer.Strength}
+                        Dexterity: {RegisteredPlayer.CurrentPlayer.Dexterity}
+                        Intellect: {RegisteredPlayer.CurrentPlayer.Intelect}
+                        Abilities: Versatile in combat, high damage output.
+                        """);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+            Console.WriteLine("""
+                Save Player data?
+                1. Yes
+                2. No
+                """);
+            string choice = Console.ReadLine();
+            if (choice == "1")
+            {
+                // Save player data
+                PlayerDataService.SavePlayer(RegisteredPlayer.CurrentPlayer);
+                Console.WriteLine("Player data saved successfully.");
+            }
+            else if (choice == "2")
+            {
+                Console.WriteLine("Player data not saved.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Player data not saved.");
             }
 
             ConsoleTexts.WhereToGo();

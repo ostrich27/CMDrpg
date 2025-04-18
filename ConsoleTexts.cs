@@ -24,12 +24,15 @@ namespace RPG
         }
         public static void WhereToGo() {
 
-            Console.WriteLine("Chose where to go: ");
-            Console.WriteLine("1.Town");
-            Console.WriteLine("2.Battlefield");
-            Console.WriteLine("3.Main menu");
-            Console.WriteLine("4. Profile");
-            int choice = GetChoice(1, 4);
+            Console.WriteLine("""
+                Chose where to go:                 
+                1.Town
+                2.Battlefield
+                3.Main menu
+                4. Profile
+                """);
+
+            int choice = Choice.Get(1, 4);
             switch (choice)
             {
                 case 1:
@@ -46,48 +49,33 @@ namespace RPG
                     break;
 
             }
-            static int GetChoice(int min, int max)
-            {
-                int choice;
-                while (!int.TryParse(Console.ReadLine(), out choice) && choice < min || choice > max)
-                {
-                    Console.WriteLine("invalid choice. try again");
-                }
-                return choice;
-            }
             
         }
 
         public static void ChoseDificulty()
         {
-            Console.WriteLine("chose dificulty: ");
-            Console.WriteLine("1.Easy");
-            Console.WriteLine("2.Normal");
-            Console.WriteLine("3.Hard");
-            int choice = GetChoice(1, 3);
+            Console.WriteLine("""
+                chose dificulty: 
+                1.Easy
+                2.Normal
+                3.Hard
+                """);
+
+            int choice = Choice.Get(1, 3);
             switch (choice)
             {
                 case 1:
-                    BattleVSGoblin.numberOfGoblins = 1;
-                    BattleVSGoblin.numberOfGoblinBoss = 0;
+                    NumberOfEnemy.numberOfEnemy = 5;
+                    NumberOfEnemy.numberOfEnemyBoss = 0;
                     break;
                 case 2:
-                    BattleVSGoblin.numberOfGoblins = 3;
-                    BattleVSGoblin.numberOfGoblinBoss = 1;
+                    NumberOfEnemy.numberOfEnemy = 3;
+                    NumberOfEnemy.numberOfEnemyBoss = 1;
                     break;
                 case 3:
-                    BattleVSGoblin.numberOfGoblins = 1;
-                    BattleVSGoblin.numberOfGoblinBoss = 2;
+                    NumberOfEnemy.numberOfEnemy = 1;
+                    NumberOfEnemy.numberOfEnemyBoss = 2;
                     break;
-            }
-            static int GetChoice(int min, int max)
-            {
-                int choice;
-                while (!int.TryParse(Console.ReadLine(), out choice) && choice < min || choice > max)
-                {
-                    Console.WriteLine("invalid choice. try again");
-                }
-                return choice;
             }
 
         }
@@ -100,5 +88,10 @@ namespace RPG
 
 
 
-}
+    }
+    class NumberOfEnemy
+    {
+        public static int numberOfEnemy = 0;
+        public static int numberOfEnemyBoss = 0;
+    }
 }

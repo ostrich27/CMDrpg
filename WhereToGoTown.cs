@@ -8,11 +8,13 @@ namespace RPG
         public static void Town()
         {
             Console.Clear();
-            Console.WriteLine("Chose where to Go: ");
-            Console.WriteLine("1. Shop");
-            Console.WriteLine("2. Tavern");
-            Console.WriteLine("3. Main menu");
-            int choice = GetChoice(1, 3);
+            Console.WriteLine("""
+                Chose where to Go: 
+                1. Shop
+                2. Tavern
+                3. Main menu
+                """);
+            int choice = Choice.Get(1, 3);
             switch (choice)
             {
                 case 1:
@@ -25,26 +27,19 @@ namespace RPG
                     MainMenu.Mainmenu();
                     break;
             }
-            static int GetChoice(int min, int max)
-            {
-                int choice;
-                while (!int.TryParse(Console.ReadLine(), out choice) && choice < min || choice > max)
-                {
-                    Console.WriteLine("invalid choice. try again");
-                }
-                return choice;
-            }
         }
         public static void Shop()
         {
             Console.Clear();
 
             Console.WriteLine($"Hello, {RegisteredPlayer.CurrentPlayer.Name},!");
-            Console.WriteLine("Welcome to the shop!");
-            Console.WriteLine("1. Buy items");
-            Console.WriteLine("2. Sell items");
-            Console.WriteLine("3. Exit shop");
-            int choice = GetChoice(1, 3);
+            Console.WriteLine("""
+                Welcome to the shop!
+                1. Buy items
+                2. Sell items
+                3. Exit shop
+                """);
+            int choice = Choice.Get(1, 3);
             switch (choice)
             {
                 case 1:
@@ -59,15 +54,6 @@ namespace RPG
                     WheretoGoTown.Town();
                     break;
             }
-            static int GetChoice(int min, int max)
-            {
-                int choice;
-                while (!int.TryParse(Console.ReadLine(), out choice) && choice < min || choice > max)
-                {
-                    Console.WriteLine("invalid choice. try again");
-                }
-                return choice;
-            }
 
 
         }
@@ -75,12 +61,14 @@ namespace RPG
         {
             Console.Clear();
 
-            Console.WriteLine($"Hello, {RegisteredPlayer.CurrentPlayer.Name},!");
-            Console.WriteLine("Welcome to the tavern!");
-            Console.WriteLine("1. Quests");
-            Console.WriteLine("2. Eat");
-            Console.WriteLine("3. Exit tavern");
-            int choice = GetChoice(1, 3);
+            Console.WriteLine($"""
+                Hello, {RegisteredPlayer.CurrentPlayer.Name},! 
+                Welcome to the tavern!
+                1. Quests
+                2. Eat
+                3. Exit tavern
+                """);
+            int choice = Choice.Get(1, 3);
             switch (choice)
             {
                 case 1:
@@ -94,16 +82,22 @@ namespace RPG
                     WheretoGoTown.Town();
                     break;
             }
-            static int GetChoice(int min, int max)
+        }
+        
+        
+
+
+    }
+    public static class Choice
+    {
+        public static int Get(int min, int max)
+        {
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice) && choice < min || choice > max)
             {
-                int choice;
-                while (!int.TryParse(Console.ReadLine(), out choice) && choice < min || choice > max)
-                {
-                    Console.WriteLine("invalid choice. try again");
-                }
-                return choice;
+                Console.WriteLine("invalid choice. try again");
             }
+            return choice;
         }
     }
-
 }

@@ -7,8 +7,6 @@ namespace RPG
 {
     public class BattleVSGoblin
     {
-        public static int numberOfGoblins = 0;
-        public static int numberOfGoblinBoss = 0;
 
         public static void Battle()
         {
@@ -23,13 +21,13 @@ namespace RPG
             float enemyGoblinDefense = 0.01f;
 
             // Create regular goblins
-            for (int i = 0; i < numberOfGoblins; i++)
+            for (int i = 0; i < NumberOfEnemy.numberOfEnemy; i++)
             {
                 goblins.Add(new Enemy("Goblin " + (i + 1), enemyGoblinhealth, enemyGoblindamage, enemyGoblinDefense));
             }
 
             // Create boss goblins
-            for (int j = 0; j < numberOfGoblinBoss; j++)
+            for (int j = 0; j < NumberOfEnemy.numberOfEnemyBoss; j++)
             {
                 goblinBosses.Add(new Enemy("Goblin Boss " + (j + 1), enemyGoblinhealth * 3, enemyGoblindamage * 3, (enemyGoblinDefense + 0.2f) * 3));
             }
@@ -63,8 +61,10 @@ namespace RPG
                 int choice;
                 while (!int.TryParse(Console.ReadLine(), out choice) || (choice != 1 && choice != 2))
                 {
-                    Console.WriteLine("invalid input!");
-                    Console.Write("Choose action 1.Attack 2.Heal ");
+                    Console.WriteLine("""
+                        invalid input! 
+                        chose action: 1.Attack  2.Heal
+                        """);
                 }
 
                 if (choice == 1)
@@ -96,8 +96,10 @@ namespace RPG
                     {
                         while (!int.TryParse(Console.ReadLine(), out targetChoice) || targetChoice < 1 || targetChoice > totalEnemies)
                         {
-                            Console.WriteLine("invalid input!");
-                            Console.Write("Choose which enemy to attack: ");
+                            Console.WriteLine("""
+                                invalid input! 
+                                chose which enemy to attack:
+                                """);
                         }
                     }
 
@@ -108,7 +110,7 @@ namespace RPG
                     {
                         // Attacking a regular goblin
                         Enemy target = goblins[targetChoice - 1];
-                        int calculatedPlayerDamage = (int)(RegisteredPlayer.CurrentPlayer.Damage * (1 - target.Defense));
+                        int calculatedPlayerDamage = (int)(RegisteredPlayer.CurrentPlayer.Damage - ( RegisteredPlayer.CurrentPlayer.Damage * target.Defense));
                         target.Health -= calculatedPlayerDamage;
 
                         Console.WriteLine($"\n{RegisteredPlayer.CurrentPlayer.Name} deals {calculatedPlayerDamage} damage to {target.Name}");
@@ -135,7 +137,7 @@ namespace RPG
                         // Attacking a boss
                         int bossIndex = targetChoice - goblins.Count - 1;
                         Enemy target = goblinBosses[bossIndex];
-                        int calculatedPlayerDamage = (int)(RegisteredPlayer.CurrentPlayer.Damage * (1 - target.Defense));
+                        int calculatedPlayerDamage = (int)(RegisteredPlayer.CurrentPlayer.Damage * (RegisteredPlayer.CurrentPlayer.Damage * target.Defense));
                         target.Health -= calculatedPlayerDamage;
 
                         Console.WriteLine($"\n{RegisteredPlayer.CurrentPlayer.Name} deals {calculatedPlayerDamage} damage to {target.Name}");
@@ -161,7 +163,7 @@ namespace RPG
                 {
                     Console.Clear();
                     Console.WriteLine("\nAll enemies defeated! You win!");
-                    int totalExp = (500 * numberOfGoblins) + (1500 * numberOfGoblinBoss);
+                    int totalExp = (500 * NumberOfEnemy.numberOfEnemy) + (1500 * NumberOfEnemy.numberOfEnemyBoss);
                     RegisteredPlayer.CurrentPlayer.EXP += totalExp;
                     Console.WriteLine($"You gained {totalExp} EXP!");
 

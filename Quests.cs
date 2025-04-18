@@ -23,10 +23,12 @@ namespace RPG
         {
             Console.Clear();
             Console.WriteLine($"Hello, {RegisteredPlayer.CurrentPlayer.Name},!");
-            Console.WriteLine("Welcome to the quest menu!");
-            Console.WriteLine("1. Kill Goblin");
-            Console.WriteLine("2. Exit Quest Menu");
-            int choice = GetChoice(1, 2);
+            Console.WriteLine("""
+                Welcome to the quest menu!
+                1. Kill Goblin
+                2. Exit tavern
+                """);
+            int choice = Choice.Get(1, 2);
             switch (choice)
             {
                 case 1:
@@ -36,22 +38,16 @@ namespace RPG
                     WheretoGoTown.Tavern();
                     break;
             }
-            static int GetChoice(int min, int max)
-            {
-                int choice;
-                while (!int.TryParse(Console.ReadLine(), out choice) && choice < min || choice > max)
-                {
-                    Console.WriteLine("invalid choice. try again");
-                }
-                return choice;
-            }
         }
         public static void KillGoblin()
         {
             if (isQuestCompleted)
             {
-                Console.WriteLine("You have completed quest!");
-                Console.WriteLine($"your reward: {questGold} gold and {questEXP} exp!");
+                Console.WriteLine($"""
+                    You have completed quest!
+                    your reward: {questGold} gold and {questEXP} exp!
+                    """);
+
                 CompleteQuest();
                 Console.WriteLine("press any key to return to Tavern");
                 Console.ReadKey();
@@ -61,26 +57,30 @@ namespace RPG
 
             else if (isQuestInProgress)
             {
-                Console.WriteLine("You are already on a quest!");
-                Console.WriteLine("press any key to return to Tavern");
+                Console.WriteLine("""
+                    You are already on a quest!
+                    press any key to return to Tavern
+                    """);
                 Console.ReadKey();
 
                 WheretoGoTown.Tavern();
             }
             if (!isQuestInProgress && questID <= 1)
-            {                
-                questName = "Kill Goblin";
+            {
                 killAmountRequired = 1;
                 questGold = 100;
                 questEXP = 1000;
+                questName = "Kill Goblin";
                 Console.WriteLine($"{questName} Reward: {questGold} Gold, {questEXP} EXP");
 
 
-                Console.WriteLine($"Kill {killAmountRequired} goblin");
-                Console.WriteLine("1. Accept Quest");
-                Console.WriteLine("2. Decline Quest");
+                Console.WriteLine($"""
+                    Kill {killAmountRequired} goblin
+                    1. Accept Quest
+                    2. Decline Quest
+                    """);
 
-                int choice = GetChoice(1, 2);
+                int choice = Choice.Get(1, 2);
                 switch (choice)
                 {
                     case 1:
@@ -102,19 +102,12 @@ namespace RPG
                         break;
 
                 }
-                static int GetChoice(int min, int max)
-                {
-                    int choice;
-                    while (!int.TryParse(Console.ReadLine(), out choice) && choice < min || choice > max)
-                    {
-                        Console.WriteLine("invalid choice. try again");
-                    }
-                    return choice;
-                }
             }else
             {
-                Console.WriteLine("Quest allready claimed!");
-                Console.WriteLine("press any key to return to tavern...");
+                Console.WriteLine("""
+                    Quest allready claimed!
+                    press any key to return to Tavern
+                    """);
                 Console.ReadKey();
                 WheretoGoTown.Tavern();
             }

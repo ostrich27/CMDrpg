@@ -34,10 +34,12 @@ namespace RPG
                 int Lvl = 1;
 
 
-                Console.WriteLine("enter player class");
-                Console.WriteLine("1.Warrior");
-                Console.WriteLine("2.Mage");
-                Console.WriteLine("3 Gionus_Jah_Rak_AAl");
+                Console.WriteLine("""
+                    Chose player class
+                    1. Warrior
+                    2. Mage
+                    3. Gionus_Jah_Rak_AAl
+                    """);
                 Player.PlayerClass playerclass;
                 playerclass = Console.ReadLine() switch
                 {
@@ -50,7 +52,7 @@ namespace RPG
                 RegisteredPlayer.CurrentPlayer = new Player(
                     playerclass,   // PlayerClass
                     PlayerName,    // Name
-                    100,           // CurrentHealth (starts full)
+                    RegisteredPlayer.CurrentPlayer.MaxHealth,           // CurrentHealth (starts full)
                     Gold,          // Gold
                     PlayerExp,     // EXP
                     ExpToNextLvl,  // EXPToNextLvl
