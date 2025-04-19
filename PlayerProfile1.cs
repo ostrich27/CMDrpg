@@ -96,7 +96,8 @@ namespace RPG
             string choice2 = Console.ReadLine();
             if (choice2 == "1")
             {
-                // Open backpack
+                Inventory inventory = new Inventory();
+                inventory.ShowInventory();
             }
             else if (choice2 == "2")
             {

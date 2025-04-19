@@ -3,9 +3,8 @@ using System;
 
 namespace RPG
 {
-    public static class RegisteredPlayer
+    public class RegisteredPlayer
     {
         public static Player CurrentPlayer;
-        public static Inventory CurrentInventory;
     }
 }

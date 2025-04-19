@@ -59,6 +59,8 @@ namespace RPG
                     Lvl            // LVL
                 );
 
+
+
                 Console.WriteLine("vaa vaa " + PlayerName + "s gaumarjos! " + playerclass + " kargi archevania");
 
  
