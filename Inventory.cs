@@ -6,53 +6,51 @@ namespace RPG
 {
     public class Inventory
     {
-        private List <InventorySlot> slots = new List<InventorySlot>();
-        private int maxSlots;
-        public Inventory(int maxSlots = 20)
+        public int maxSlots = 10;
+        public List<Item> items = new List<Item>();
+
+        public void AddItem(Item newItem)
         {
-            this.maxSlots = maxSlots;
-        }
-        public void AddItem(Item item, int quantity) 
-        {
-            if (item.IsStackable) 
+            if (newItem.isStackable)
             {
-                var existingslot = slots.Find(slot => slot.Item.Name == item.Name);
-                if (existingslot != null) 
+                foreach (Item item in items)
                 {
-                    existingslot.AddQuantity(quantity);
+                    if (item.name == newItem.name && item.isStackable && item.quantity < item.stackLimit)
+                    {
+                        int spaceLeft = item.stackLimit - item.quantity;
+                        int amountToAdd = Math.Min(spaceLeft, newItem.quantity);
+                        item.quantity += amountToAdd;
+                        newItem.quantity -= amountToAdd;
+                        if (newItem.quantity == 0)
+                            return;
+                    }
+                }
+            }
+            while (newItem.quantity > 0)
+            {
+                if (items.Count >= maxSlots)
+                {
+                    Console.WriteLine("inventory is full! could not add all items");
                     return;
-                }                
-            }
-            if (slots.Count < maxSlots)
-            {
-                slots.Add(new InventorySlot(item, quantity));
-            }
-            else
-            {
-                Console.WriteLine("Inventory is full!");
+                }
+                int addAmount = newItem.isStackable ? Math.Min(newItem.stackLimit, newItem.quantity) : 1;
+                Item itemCopy = new Item(newItem.name, newItem.isStackable, addAmount, newItem.stackLimit);
+                items.Add(itemCopy);
+                newItem.quantity -= addAmount;
             }
         }
-        public void RemoveItem(Item item,string itemName, int quantity)
-        {
-            var slot = slots.Find(slot => slot.Item.Name == itemName);
-            if (slot != null)
-            {
-                slot.RemoveQuantity(quantity);
-                if (slot.Quantity <= 0)
-                    slots.Remove(slot);
-            }
-            else 
-            {
-                Console.WriteLine("Item not found in inventory!"); 
-            }
-        }
-        public void ShowInventory()
+
+        public void ShowItems()
         {
             Console.WriteLine("Inventory:");
-            foreach (var slot in slots)
+            foreach (Item item in items)
             {
-                Console.WriteLine($"{slot.Item.Name} - {slot.Quantity}");
+                Console.WriteLine("- " + item.name + "-" + item.quantity);
             }
+            Console.WriteLine($"Inventory slots: {items.Count} / {maxSlots}");
         }
+        public static Inventory SharedInventory = new Inventory();
+        Item potion = new Item("Health Potion", true, 1, 5);
+
     }
 }

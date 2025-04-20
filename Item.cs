@@ -6,12 +6,16 @@ namespace RPG
 {
     public class Item
     {
-        public String Name { get; set; }
-        public bool IsStackable { get; set; }
-        public Item (string name, bool isStackable)
+        public string name;
+        public bool isStackable;
+        public int quantity;
+        public int stackLimit;
+        public Item (string name, bool isStackable = false, int quantity = 1, int stackLimit = 1)
         {
-            Name = name;
-            IsStackable = isStackable;
+            this.name = name;
+            this.isStackable = isStackable;
+            this.quantity = quantity;
+            this.stackLimit = stackLimit;
         }
     }
 }

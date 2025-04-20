@@ -96,8 +96,7 @@ namespace RPG
             string choice2 = Console.ReadLine();
             if (choice2 == "1")
             {
-                Inventory inventory = new Inventory();
-                inventory.ShowInventory();
+                Inventory.SharedInventory.ShowItems();
             }
             else if (choice2 == "2")
             {

@@ -85,12 +85,11 @@ namespace RPG
         }
         public static void BuyItems()
         {
-            Inventory inventory = new Inventory();
-            Item potion = new Item("Health Potion", true);
-            Item sword = new Item("Sword", false);
+            int itemAmmount;
+            int itemStackLimit;
             Console.WriteLine("""
-                1. health potion - 10 gold
-                2. sword - 50 gold
+                1. Health Potion - 10 Gold
+                2. sword - 50 Gold
                 """);
             int choice = Choice.Get(1, 2);
             switch (choice)
@@ -99,22 +98,24 @@ namespace RPG
                     if (RegisteredPlayer.CurrentPlayer.Gold >= 10)
                     {
                         RegisteredPlayer.CurrentPlayer.Gold -= 10;
-                        Console.WriteLine("You bought a health potion.");
+                        Inventory.SharedInventory.AddItem(new Item("Health Potion", true, itemAmmount = 1, itemStackLimit = 5));
+                        Console.WriteLine("You bought a Health Potion!");
                     }
                     else
                     {
-                        Console.WriteLine("You don't have enough gold.");
+                        Console.WriteLine("You don't have enough gold!");
                     }
                     break;
                 case 2:
                     if (RegisteredPlayer.CurrentPlayer.Gold >= 50)
                     {
+                        Inventory.SharedInventory.AddItem(new Item("Sword", false, itemAmmount = 1, itemStackLimit = 1));
                         RegisteredPlayer.CurrentPlayer.Gold -= 50;
-                        Console.WriteLine("You bought a sword.");
+                        Console.WriteLine("You bought a Sword!");
                     }
                     else
                     {
-                        Console.WriteLine("You don't have enough gold.");
+                        Console.WriteLine("You don't have enough gold!");
                     }
                     break;
             }
