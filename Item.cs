@@ -4,12 +4,13 @@ using RPG;
 
 namespace RPG
 {
+    [Serializable]
     public class Item
     {
-        public string name;
-        public bool isStackable;
-        public int quantity;
-        public int stackLimit;
+        public string name { get; set; }
+        public bool isStackable { get; set; }
+        public int quantity { get; set; }   
+        public int stackLimit { get; set; } = 10;
         public Item (string name, bool isStackable = false, int quantity = 1, int stackLimit = 1)
         {
             this.name = name;

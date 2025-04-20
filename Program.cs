@@ -38,7 +38,7 @@ namespace RPG
                     Chose player class
                     1. Warrior
                     2. Mage
-                    3. Gionus_Jah_Rak_AAl
+                    3. GionusJahRakAAl
                     """);
                 Player.PlayerClass playerclass;
                 playerclass = Console.ReadLine() switch
@@ -50,13 +50,12 @@ namespace RPG
                 };
 
                 RegisteredPlayer.CurrentPlayer = new Player(
-                    playerclass,   // PlayerClass
-                    PlayerName,    // Name
-                    RegisteredPlayer.CurrentPlayer.MaxHealth,           // CurrentHealth (starts full)
-                    Gold,          // Gold
-                    PlayerExp,     // EXP
-                    ExpToNextLvl,  // EXPToNextLvl
-                    Lvl            // LVL
+                    playerclass,    
+                    PlayerName,     
+                    Gold,          
+                    PlayerExp,      
+                    ExpToNextLvl,   
+                    Lvl             
                 );
 
 

@@ -39,6 +39,8 @@ namespace RPG
                     File.Copy(SaveFileName, BackupFileName, overwrite: true);
                 }
 
+                player.Inventory.items.RemoveAll(item => item == null);
+
                 // Serialize and save player data
                 var serializer = new XmlSerializer(typeof(Player));
                 using (var stream = new FileStream(SaveFileName, FileMode.Create))

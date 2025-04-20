@@ -4,10 +4,11 @@ using RPG;
 
 namespace RPG
 {
+    [Serializable]
     public class Inventory
     {
-        public int maxSlots = 10;
-        public List<Item> items = new List<Item>();
+        public int maxSlots { get; set; } = 10;
+        public List<Item> items { get; set; } 
 
         public void AddItem(Item newItem)
         {
@@ -49,8 +50,9 @@ namespace RPG
             }
             Console.WriteLine($"Inventory slots: {items.Count} / {maxSlots}");
         }
+        [NonSerialized]
         public static Inventory SharedInventory = new Inventory();
         Item potion = new Item("Health Potion", true, 1, 5);
-
+        Item sword = new Item("Sword", false, 1, 1);
     }
 }

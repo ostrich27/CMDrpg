@@ -71,6 +71,7 @@ public class Player
     public int LVL { get; set; }
 
     public bool IsAlive => RegisteredPlayer.CurrentPlayer.CurrentHealth > 0;
+    public Inventory Inventory { get; set; } = new Inventory();
 
 
     // Parameterless constructor required for XML serialization
@@ -89,9 +90,10 @@ public class Player
         EXP = 0;
         EXPToNextLvl = 500;
         LVL = 1;
+        Inventory = new Inventory();
     }
 
-    public Player(PlayerClass playerClass, string name, int currentHealth, int gold, int playerExp, int expToNextLvl, int lvl)
+    public Player(PlayerClass playerClass, string name, int gold, int playerExp, int expToNextLvl, int lvl)
     {
         this.playerClass = playerClass;
         Name = name;
@@ -99,7 +101,7 @@ public class Player
         EXP = playerExp;
         EXPToNextLvl = expToNextLvl;
         LVL = lvl;
-
+        Inventory = new Inventory();
         // Set base stats based on class
         HandlePlayerClass();
 
