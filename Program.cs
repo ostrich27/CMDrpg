@@ -12,7 +12,7 @@ namespace RPG
 
         static void Main(string[] args)
         {
-
+            
             // Load player data
             RegisteredPlayer.CurrentPlayer = PlayerDataService.LoadPlayer();
 

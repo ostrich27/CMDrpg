@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using RPG;
 
 namespace RPG
 {
@@ -8,7 +8,13 @@ namespace RPG
     public class Inventory
     {
         public int maxSlots { get; set; } = 10;
-        public List<Item> items { get; set; } 
+        public List<Item> items = new List<Item>();
+
+        public Inventory()
+        {
+            maxSlots = 10;
+            items = new List<Item>();
+        }
 
         public void AddItem(Item newItem)
         {
@@ -46,13 +52,17 @@ namespace RPG
             Console.WriteLine("Inventory:");
             foreach (Item item in items)
             {
-                Console.WriteLine("- " + item.name + "-" + item.quantity);
+                Console.WriteLine("- " + item.name + " - " + item.quantity);
             }
             Console.WriteLine($"Inventory slots: {items.Count} / {maxSlots}");
         }
+
         [NonSerialized]
         public static Inventory SharedInventory = new Inventory();
-        Item potion = new Item("Health Potion", true, 1, 5);
-        Item sword = new Item("Sword", false, 1, 1);
+
+        // These object instances should not be here; they’re not used inside methods or properties.
+        // You might want to move them to somewhere like a Game class initializer or main method.
+         //Item potion = new Item("Health Potion", true, 1, 5);
+        // Item sword = new Item("Sword", false, 1, 1);
     }
 }

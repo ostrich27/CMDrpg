@@ -10,7 +10,7 @@ public class Player
         GionusJahRakAAl,
     }
 
-    public PlayerClass playerClass; // This is the field that will be serialized
+    public PlayerClass playerClass;
 
     public void HandlePlayerClass()
     {
@@ -74,10 +74,9 @@ public class Player
     public Inventory Inventory { get; set; } = new Inventory();
 
 
-    // Parameterless constructor required for XML serialization
+
     public Player( )
     {
-        // Initialize with default values
         playerClass = PlayerClass.Warrior;
         Name = "New Player";
         MaxHealth = 100;
@@ -102,10 +101,7 @@ public class Player
         EXPToNextLvl = expToNextLvl;
         LVL = lvl;
         Inventory = new Inventory();
-        // Set base stats based on class
         HandlePlayerClass();
-
-        // Ensure CurrentHealth does not exceed MaxHealth
         CurrentHealth = MaxHealth;
     }
 }

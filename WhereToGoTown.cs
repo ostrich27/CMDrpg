@@ -98,6 +98,7 @@ namespace RPG
                     if (RegisteredPlayer.CurrentPlayer.Gold >= 10)
                     {
                         RegisteredPlayer.CurrentPlayer.Gold -= 10;
+                        
                         Inventory.SharedInventory.AddItem(new Item("Health Potion", true, itemAmmount = 1, itemStackLimit = 5));
                         Console.WriteLine("You bought a Health Potion!");
                     }
