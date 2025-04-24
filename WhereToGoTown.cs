@@ -99,7 +99,7 @@ namespace RPG
                     {
                         RegisteredPlayer.CurrentPlayer.Gold -= 10;
                         
-                        Inventory.SharedInventory.AddItem(new Item("Health Potion", true, itemAmmount = 1, itemStackLimit = 5));
+                        RegisteredPlayer.CurrentPlayer.Inventory.AddItem(new Item("Health Potion", true, itemAmmount = 1, itemStackLimit = 5));
                         Console.WriteLine("You bought a Health Potion!");
                     }
                     else
@@ -110,7 +110,7 @@ namespace RPG
                 case 2:
                     if (RegisteredPlayer.CurrentPlayer.Gold >= 50)
                     {
-                        Inventory.SharedInventory.AddItem(new Item("Sword", false, itemAmmount = 1, itemStackLimit = 1));
+                        RegisteredPlayer.CurrentPlayer.Inventory.AddItem(new Item("Sword", false, itemAmmount = 1, itemStackLimit = 1));
                         RegisteredPlayer.CurrentPlayer.Gold -= 50;
                         Console.WriteLine("You bought a Sword!");
                     }
