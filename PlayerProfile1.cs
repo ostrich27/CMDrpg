@@ -76,7 +76,6 @@ namespace RPG
             string choice = Console.ReadLine();
             if (choice == "1")
             {
-                // Save player data
                 PlayerDataService.SavePlayer(RegisteredPlayer.CurrentPlayer);
                 Console.WriteLine("Player data saved successfully.");
             }
@@ -88,8 +87,12 @@ namespace RPG
             {
                 Console.WriteLine("Invalid choice. Player data not saved.");
             }
+
+
+
+
             Console.WriteLine("""
-                Open backpack?
+                Open Inventory?
                 1. yes
                 2. no
                 """);

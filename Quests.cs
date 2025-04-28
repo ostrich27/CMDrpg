@@ -8,14 +8,12 @@ namespace RPG
     {
         public static bool isQuestAvailable;
         public static bool isQuestInProgress;
-        public static bool isQuestAcceptable;
         public static bool isQuestCompleted;
         public static bool isQuestAccepted;
         public static string questName;
         public static int questID = 1;
         public static int questEXP;
         public static int questGold;
-        public static int requiredKillCount;
         public static int killCount;
         public static int killAmountRequired;
 

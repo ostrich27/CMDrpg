@@ -9,7 +9,6 @@ public class Player
         Mage,
         GionusJahRakAAl,
     }
-
     public PlayerClass playerClass;
 
     public void HandlePlayerClass()
@@ -26,7 +25,7 @@ public class Player
                 Defense = WarriorBaseDefense + (Dexterity / 100);
 
                 MaxHealth = (int)(WarriorBaseHealth + (Strength * 0.5f));
-                Damage = (int)(WarriorBaseDamage + (Strength * 0.2));
+                Damage = (int)(WarriorBaseDamage + (Strength * 0.2f));
                 break;
             case PlayerClass.Mage:
                 Strength = 2;
@@ -34,9 +33,10 @@ public class Player
                 Intelect = 7;
                 int MageBaseHealth = 100;
                 int MageBaseDamage = 10;
-                float MageBaseDefense = 0.01f + (Dexterity / 100);
+                float MageBaseDefense = 0.01f;
+                Defense = MageBaseDefense + (Dexterity / 100);
                 MaxHealth = (int)(MageBaseHealth + (Strength * 0.5f));
-                Damage = (int)(MageBaseDamage + (Intelect * 0.5));
+                Damage = (int)(MageBaseDamage + (Intelect * 0.5f));
                 break;
             case PlayerClass.GionusJahRakAAl:
                 Strength = 10;
@@ -44,13 +44,15 @@ public class Player
                 Intelect = 10;
                 int GionusBaseHealth = 130;
                 int GionusBaseDamage = 16;
-                float GionusBaseDefense = 0.5f + (Dexterity / 100);
+                float GionusBaseDefense = 0.5f;
+                Defense = GionusBaseDefense + (Dexterity / 100);
                 MaxHealth = (int)(GionusBaseHealth + (Strength * 0.5f));
-                Damage = (int)(GionusBaseDamage + (Dexterity * 0.5));
+                Damage = (int)(GionusBaseDamage + (Dexterity * 0.5f));
                 break;
 
         }
     }
+
 
     // Basic stats
     public string Name { get; set; }
@@ -73,6 +75,10 @@ public class Player
     public bool IsAlive => RegisteredPlayer.CurrentPlayer.CurrentHealth > 0;
     public Inventory Inventory { get; set; } = new Inventory();
 
+    // item types
+    public Item EquippedWeapon { get; set; }
+    public Item EquippedArmor { get; set; }
+    public Item EquippedHelmet { get; set; }
 
 
     public Player( )
@@ -103,5 +109,6 @@ public class Player
         Inventory = new Inventory();
         HandlePlayerClass();
         CurrentHealth = MaxHealth;
+        
     }
 }

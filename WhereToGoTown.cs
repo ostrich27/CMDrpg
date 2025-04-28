@@ -85,21 +85,36 @@ namespace RPG
         }
         public static void BuyItems()
         {
-            int itemAmmount;
+            int itemAmount;
             int itemStackLimit;
             Console.WriteLine("""
-                1. Health Potion - 10 Gold
-                2. sword - 50 Gold
-                """);
-            int choice = Choice.Get(1, 2);
+        1. Health Potion - 10 Gold
+        2. Wooden Sword - 50 Gold
+        3. wooden helmet
+        4. wooden armor
+        """);
+            int choice = Choice.Get(1, 4);
             switch (choice)
             {
                 case 1:
                     if (RegisteredPlayer.CurrentPlayer.Gold >= 10)
                     {
                         RegisteredPlayer.CurrentPlayer.Gold -= 10;
-                        
-                        RegisteredPlayer.CurrentPlayer.Inventory.AddItem(new Item("Health Potion", true, itemAmmount = 1, itemStackLimit = 5));
+                        RegisteredPlayer.CurrentPlayer.Inventory.AddItem(new Item(
+                            name: "Health Potion",
+                            isStackable: true,
+                            isEquipable: false,
+                            isEquiped: false,
+                            isEnchanted: false,
+                            quantity: itemAmount = 1,
+                            stackLimit: itemStackLimit = 5,
+                            itemDamage: 0,
+                            itemHealth: 0,
+                            itemStrength: 0,
+                            itemDexterity: 0,
+                            itemIntelect: 0,
+                            itemType: ItemType.None
+                        ));
                         Console.WriteLine("You bought a Health Potion!");
                     }
                     else
@@ -107,12 +122,79 @@ namespace RPG
                         Console.WriteLine("You don't have enough gold!");
                     }
                     break;
+
                 case 2:
                     if (RegisteredPlayer.CurrentPlayer.Gold >= 50)
                     {
-                        RegisteredPlayer.CurrentPlayer.Inventory.AddItem(new Item("Sword", false, itemAmmount = 1, itemStackLimit = 1));
                         RegisteredPlayer.CurrentPlayer.Gold -= 50;
-                        Console.WriteLine("You bought a Sword!");
+                        RegisteredPlayer.CurrentPlayer.Inventory.AddItem(new Item(
+                            name: "Wooden Sword",
+                            isStackable: false,
+                            isEquipable: true,
+                            isEquiped: false,
+                            isEnchanted: false,
+                            quantity: itemAmount = 1,
+                            stackLimit: itemStackLimit = 1,
+                            itemDamage: 20,
+                            itemHealth: 0,
+                            itemStrength: 0,
+                            itemDexterity: 0,
+                            itemIntelect: 0,
+                            itemType: ItemType.Weapon
+                        ));
+                        Console.WriteLine("You bought a Wooden Sword!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have enough gold!");
+                    }
+                    break;
+                case 3:
+                    if (RegisteredPlayer.CurrentPlayer.Gold >= 50)
+                    {
+                        RegisteredPlayer.CurrentPlayer.Gold -= 50;
+                        RegisteredPlayer.CurrentPlayer.Inventory.AddItem(new Item(
+                            name: "Wooden Helmet",
+                            isStackable: false,
+                            isEquipable: true,
+                            isEquiped: false,
+                            isEnchanted: false,
+                            quantity: itemAmount = 1,
+                            stackLimit: itemStackLimit = 1,
+                            itemDamage: 0,
+                            itemHealth: 10,
+                            itemStrength: 5,
+                            itemDexterity: 3,
+                            itemIntelect: 1,
+                            itemType: ItemType.Helmet
+                        ));
+                        Console.WriteLine("You bought a Wooden Helmet!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have enough gold!");
+                    }
+                    break;
+                case 4:
+                    if (RegisteredPlayer.CurrentPlayer.Gold >= 50)
+                    {
+                        RegisteredPlayer.CurrentPlayer.Gold -= 50;
+                        RegisteredPlayer.CurrentPlayer.Inventory.AddItem(new Item(
+                            name: "Wooden Armor",
+                            isStackable: false,
+                            isEquipable: true,
+                            isEquiped: false,
+                            isEnchanted: false,
+                            quantity: itemAmount = 1,
+                            stackLimit: itemStackLimit = 1,
+                            itemDamage: 0,
+                            itemHealth: 10,
+                            itemStrength: 5,
+                            itemDexterity: 3,
+                            itemIntelect: 1,
+                            itemType: ItemType.Armor
+                        ));
+                        Console.WriteLine("You bought a Wooden Armor!");
                     }
                     else
                     {
